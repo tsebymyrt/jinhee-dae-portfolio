@@ -2,162 +2,53 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>김진희 데이터 분석 포트폴리오</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <nav>
+    <ul>
+      <li><a href="#about">홈</a></li>
+      <li><a href="#resume">경력기술서</a></li>
+      <li><a href="#portfolio">포트폴리오</a></li>
+      <li><a href="#contact">연락처</a></li>
+    </ul>
+  </nav>
+
   <header>
-    <h1>안녕하세요, 데이터 분석 엔지니어 김진희입니다.</h1>
-    <p>이 포트폴리오는 저의 경력, 프로젝트, 그리고 기술 역량을 소개하기 위해 제작되었습니다.</p>
+    <h1>김진희 | 데이터 분석 엔지니어</h1>
+    <p>이커머스 중심의 실무 프로젝트와 분석 자동화 경험을 담은 포트폴리오입니다.</p>
   </header>
 
-  <section>
-    <h2>📄 이력 요약</h2>
+  <section id="about">
+    <h2>👩‍💼 자기소개</h2>
+    <p>데이터를 기반으로 문제를 정의하고, 분석을 통해 인사이트를 도출하며, 이를 자동화하는 일을 좋아합니다. 실제 서비스에서 가치 있는 결정을 도울 수 있는 분석을 추구합니다.</p>
+  </section>
+
+  <section id="resume">
+    <h2>📄 경력기술서</h2>
     <ul>
-      <li>이커머스 기반 데이터 분석 및 자동화 경험</li>
-      <li>MySQL, BigQuery, Python을 활용한 분석 업무 수행</li>
-      <li>GA4, GTM 기반 고객 행동 분석 및 리포트 구축</li>
+      <li>이커머스 고객 분석 및 마케팅 성과 리포트 자동화</li>
+      <li>GA4 + BigQuery 기반 유입-구매 퍼널 분석</li>
+      <li>Cafe24 API를 활용한 데이터 파이프라인 구축 및 자동화</li>
     </ul>
   </section>
 
-  <section>
-    <h2>📊 주요 프로젝트</h2>
+  <section id="portfolio">
+    <h2>📊 프로젝트</h2>
     <ul>
-      <li><strong>RFM 기반 고객 세그먼트 분석</strong> - 구매 행동 기반 고객 분류</li>
-      <li><strong>GA4 + BigQuery 퍼널 분석</strong> - 유입부터 구매까지의 전환 퍼널 시각화</li>
-      <li><strong>Cafe24 API 자동화</strong> - 고객/주문 정보 수집 파이프라인 구축</li>
+      <li><strong>RFM 분석 기반 고객 세그먼트</strong> – 구매 행동을 기반으로 고객을 분류하고 타겟 마케팅을 위한 인사이트 도출</li>
+      <li><strong>GA4 Funnel 분석</strong> – 유입부터 구매까지의 전환 퍼널 분석 및 시각화 대시보드 구축</li>
+      <li><strong>Cafe24 자동화 시스템</strong> – 고객 및 주문 데이터를 수집/정제하여 MySQL/BigQuery에 자동 적재</li>
     </ul>
   </section>
 
-  <section>
+  <section id="contact">
     <h2>📫 연락처</h2>
     <p>Email: jinhee.kim@olit.co.kr</p>
-    <p>GitHub: <a href="https://github.com/tsebymyrt">https://github.com/tsebymyrt</a></p>
-    <p>Netlify: <a href="https://queryjin.netlify.app">https://queryjin.netlify.app</a></p>
+    <p>GitHub: <a href="https://github.com/tsebymyrt">@tsebymyrt</a></p>
+    <p>Netlify: <a href="https://your-netlify-url.netlify.app">포트폴리오 사이트 바로가기</a></p>
   </section>
 </body>
 </html>
-/* Reset & Base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Pretendard', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa;
-  color: #212529;
-  line-height: 1.8;
-  font-size: 16px;
-  letter-spacing: 0.4px;
-}
-
-/* Navigation */
-nav {
-  background-color: #1c1f24;
-  padding: 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-nav ul li a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 8px 12px;
-  transition: background 0.3s;
-}
-
-nav ul li a:hover {
-  background-color: #343a40;
-  border-radius: 4px;
-}
-
-/* Header */
-header {
-  background-color: #2c3e50;
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.2em;
-}
-
-p {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.1em;
-}
-
-/* Section */
-section {
-  padding: 40px 20px;
-  max-width: 960px;
-  margin: auto;
-}
-
-h2 {
-  font-size: 1.6em;
-  color: #2c3e50;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #dee2e6;
-  padding-bottom: 5px;
-}
-
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-ul li {
-  background-color: #ffffff;
-  margin: 12px 0;
-  padding: 15px 20px;
-  border-left: 5px solid #0d6efd;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  transition: background 0.2s ease-in-out;
-}
-
-ul li:hover {
-  background-color: #f1f3f5;
-}
-
-a {
-  color: #0d6efd;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-  }
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-  section {
-    padding: 30px 15px;
-  }
-  ul li {
-    padding: 12px 15px;
-  }
-}
-
