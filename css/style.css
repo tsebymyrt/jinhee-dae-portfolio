@@ -1,8 +1,11 @@
-/* Reset & Base */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -72,7 +75,7 @@ header p {
 section {
   padding: 50px 24px;
   max-width: 960px;
-  margin: auto;
+  margin: 0 auto 60px auto;
 }
 
 h2 {
@@ -113,6 +116,40 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.portfolio-item {
+  border: 1px solid #dee2e6;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.portfolio-item h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.portfolio-item p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #495057;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   h1 {
@@ -132,9 +169,8 @@ a:hover {
     padding: 14px 16px;
     font-size: 1em;
   }
-}
 
-/* Emoji Styling */
-h2::before {
-  margin-right: 8px;
+  .portfolio-item img {
+    max-height: 240px;
+  }
 }
