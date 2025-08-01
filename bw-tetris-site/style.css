@@ -11,3 +11,23 @@ canvas {
   border: 2px solid #fff;
   background-color: #000;
 }
+
+.controls {
+  margin-top: 20px;
+}
+
+.controls button {
+  font-size: 20px;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 8px;
+  background-color: #333;
+  color: white;
+  border: none;
+}
+
+.instructions {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}

@@ -9,7 +9,34 @@
 <body>
   <h1>💙 BW's Tetris 💙</h1>
   <canvas id="tetris" width="240" height="400"></canvas>
-  <p>← → : 이동 | ↓ : 하강 | Q/W : 회전</p>
+
+  <!-- 조작 버튼 -->
+  <div class="controls">
+    <button id="left">←</button>
+    <button id="right">→</button>
+    <button id="down">↓</button>
+    <button id="rotate">⟳</button>
+  </div>
+
+  <!-- 설명 -->
+  <div class="instructions">
+    <p>💡 조작 방법</p>
+    <ul>
+      <li>← → : 좌우 이동</li>
+      <li>↓ : 하강</li>
+      <li>Q/W 또는 ⟳ : 회전</li>
+      <li>모바일에서도 터치로 조작 가능!</li>
+    </ul>
+  </div>
+
   <script src="tetris.js"></script>
+
+  <!-- 모바일 터치 이벤트 연결 -->
+  <script>
+    document.getElementById('left').addEventListener('click', () => playerMove(-1));
+    document.getElementById('right').addEventListener('click', () => playerMove(1));
+    document.getElementById('down').addEventListener('click', playerDrop);
+    document.getElementById('rotate').addEventListener('click', () => playerRotate(1));
+  </script>
 </body>
 </html>
