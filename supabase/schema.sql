@@ -54,3 +54,41 @@ DROP POLICY IF EXISTS "Allow anonymous inserts" ON public.mystery_rankings;
 CREATE POLICY "Allow anonymous inserts" ON public.mystery_rankings FOR INSERT TO anon WITH CHECK (true);
 DROP POLICY IF EXISTS "Allow anonymous reads" ON public.mystery_rankings;
 CREATE POLICY "Allow anonymous reads" ON public.mystery_rankings FOR SELECT TO anon USING (true);
+
+-- ============================================================
+-- 사내 메신저 (실시간 채팅) — messenger_messages
+-- 48시간이 지난 메시지는 조회에서 제외되고, 접속 시 자동 삭제됩니다.
+-- ============================================================
+CREATE TABLE IF NOT EXISTS public.messenger_messages (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  nickname TEXT NOT NULL DEFAULT 'anonymous',
+  body TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS messenger_messages_created_at_idx
+  ON public.messenger_messages(created_at DESC);
+
+ALTER TABLE public.messenger_messages ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Allow anonymous inserts" ON public.messenger_messages;
+CREATE POLICY "Allow anonymous inserts" ON public.messenger_messages
+  FOR INSERT TO anon WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Allow anonymous reads" ON public.messenger_messages;
+CREATE POLICY "Allow anonymous reads" ON public.messenger_messages
+  FOR SELECT TO anon USING (true);
+
+-- 48시간 지난 메시지 삭제를 클라이언트가 호출할 수 있도록 함수 제공
+DROP POLICY IF EXISTS "Allow anonymous deletes of expired" ON public.messenger_messages;
+CREATE POLICY "Allow anonymous deletes of expired" ON public.messenger_messages
+  FOR DELETE TO anon USING (created_at < NOW() - INTERVAL '48 hours');
+
+-- 실시간(Realtime) 활성화: 새 메시지가 즉시 구독자에게 전송됩니다.
+-- 이미 추가되어 있으면 에러가 날 수 있으나 무시해도 됩니다.
+DO $$
+BEGIN
+  ALTER PUBLICATION supabase_realtime ADD TABLE public.messenger_messages;
+EXCEPTION
+  WHEN duplicate_object THEN NULL;
+END $$;

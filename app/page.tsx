@@ -131,12 +131,13 @@ export default function IntranetHub() {
 
   useEffect(() => {
     const fetchCounts = async () => {
-      const [sudoku, tetris, mystery] = await Promise.all([
+      const [sudoku, tetris, mystery, messenger] = await Promise.all([
         getPlayCount('sudoku'),
         getPlayCount('tetris'),
         getPlayCount('mystery'),
+        getPlayCount('messenger'),
       ]);
-      setPlayCounts({ sudoku, tetris, mystery });
+      setPlayCounts({ sudoku, tetris, mystery, messenger });
     };
     fetchCounts();
   }, []);
@@ -196,14 +197,13 @@ export default function IntranetHub() {
       comingSoon: true,
     },
     {
-      id: 'coming3',
+      id: 'messenger',
       title: '사내 메신저',
-      description: '팀원들과 실시간으로 소통하는 사내 메신저입니다.',
+      description: '팀원들과 실시간으로 소통하는 사내 메신저입니다. 대화는 48시간 후 자동 삭제됩니다.',
       icon: '💬',
-      href: '#',
+      href: '/games/messenger',
       version: 'AcmeChat v4.2',
       category: '커뮤니케이션',
-      comingSoon: true,
     },
   ];
 
@@ -269,7 +269,7 @@ export default function IntranetHub() {
           </div>
           <div className="px-4 py-3">
             <p className="text-xs text-gray-600">
-              안녕하세요{nickname ? `, ${nickname} 님` : ''}. 오늘도 활기찬 하루 되세요. 현재 <strong>3개</strong>의 업무 도구가 사용 가능합니다.
+              안녕하세요{nickname ? `, ${nickname} 님` : ''}. 오늘도 활기찬 하루 되세요. 현재 <strong>4개</strong>의 업무 도구가 사용 가능합니다.
               IT 팀에서 새로운 도구를 지속적으로 추가하고 있습니다.
             </p>
             <div className="flex gap-4 mt-2 text-xs text-gray-500">
