@@ -15,3 +15,16 @@ export type GameLog = {
   action: 'enter' | 'exit' | 'complete';
   created_at?: string;
 };
+
+export type MessengerMessage = {
+  id: string;
+  nickname: string;
+  body: string;
+  created_at: string;
+};
+
+export const isSupabaseConfigured =
+  !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
+  !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+export const MESSAGE_TTL_HOURS = 48;
